@@ -1,0 +1,19 @@
+import os
+import pandas as pd
+from pandas import ExcelWriter
+from pandas import ExcelFile
+
+df = pd.DataFrame()
+
+for f in ['C:\project\data_1.xlsx','C:\project\data_2.xlsx']:
+    data = pd.read_excel(f, sheetname = 'Sheet1')
+    data['from'] = [os.path.basename(f)] * len(data)
+    df = df.append(other=data)
+df.to_excel("c:\project\General_data.xlsx", "Sheet1")
+
+df1 = pd.DataFrame()
+for f in ['C:\project\data_1.xlsx','C:\project\data_2.xlsx']:
+    data = pd.read_excel(f, sheetname = 'Sheet2')
+    data['from'] = [os.path.basename(f)] * len(data)
+    df1 = df1.append(other=data)
+df1.to_excel("c:\project\General_data.xlsx", "Sheet2")
